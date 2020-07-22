@@ -5,7 +5,7 @@ defmodule SbomPoc.MixProject do
     [
       app: :sbomPoc,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -47,7 +47,8 @@ defmodule SbomPoc.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
   end
 

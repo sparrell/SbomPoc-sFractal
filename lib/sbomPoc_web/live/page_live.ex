@@ -1,4 +1,5 @@
 defmodule SbomPocWeb.PageLive do
+  @moduledoc "Landing page live view"
   use SbomPocWeb, :live_view
 
   @impl true
