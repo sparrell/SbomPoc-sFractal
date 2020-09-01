@@ -1,5 +1,5 @@
 defmodule SbomPocWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :sbomPoc
+  use Phoenix.Endpoint, otp_app: :sbom_poc
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
@@ -22,7 +22,7 @@ defmodule SbomPocWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :sbomPoc,
+    from: :sbom_poc,
     gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
@@ -32,7 +32,7 @@ defmodule SbomPocWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :sbomPoc
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :sbom_poc
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,

@@ -1,5 +1,5 @@
 defmodule SbomPoc.Repo do
   use Ecto.Repo,
-    otp_app: :sbomPoc,
+    otp_app: :sbom_poc,
     adapter: Ecto.Adapters.Postgres
 end

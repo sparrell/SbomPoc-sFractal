@@ -20,5 +20,5 @@ defmodule SbomPocWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :sbomPoc
+  use Gettext, otp_app: :sbom_poc
 end

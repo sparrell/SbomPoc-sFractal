@@ -1,7 +1,7 @@
 use Mix.Config
 
 # Configure your database
-config :sbomPoc, SbomPoc.Repo,
+config :sbom_poc, SbomPoc.Repo,
   username: "postgres",
   password: "postgres",
   database: "sbompoc_dev",
@@ -15,7 +15,7 @@ config :sbomPoc, SbomPoc.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :sbomPoc, SbomPocWeb.Endpoint,
+config :sbom_poc, SbomPocWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,7 +55,7 @@ config :sbomPoc, SbomPocWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :sbomPoc, SbomPocWeb.Endpoint,
+config :sbom_poc, SbomPocWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
