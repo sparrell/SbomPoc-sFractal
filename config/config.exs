@@ -7,11 +7,11 @@
 # General application configuration
 use Mix.Config
 
-config :sbomPoc,
+config :sbom_poc,
   ecto_repos: [SbomPoc.Repo]
 
 # Configures the endpoint
-config :sbomPoc, SbomPocWeb.Endpoint,
+config :sbom_poc, SbomPocWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "CXruorR0OIs0Zn+Ue2oTYTkTM/jUU3tTL9LVJWgd7QR/FFMc4G5WE9Wft56wNpgC",
   render_errors: [view: SbomPocWeb.ErrorView, accepts: ~w(html json), layout: false],
