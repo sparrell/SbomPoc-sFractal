@@ -4,8 +4,12 @@ subject to change based on
 attendance, will of the group,
 and whim of the moderator.
 
+Please note that on 28-Oct the US will still be on Daylight Savings Time but Europe will have switched to standard time on 25-Oct. We unfortunately scheduled during the confusing week.
+
 * 7:45 AM - 8:00 AM - Zoom open, watercooler conversation
-* 8:00 AM - 9:45 AM - Breakout Sesson #1 - Topics arranged pre-plugfest
+* 8:00 AM - 9:45 AM - Breakout Sesson #1
+   - Topics arranged pre-plugfest
+   - [Details](./breakouts.md)
 * 9:45 AM - 10:00 AM - Break
 * 10 AM - 11 AM or longer? - Opening Plenary Session
    - Kickoff - Duncan Sparrell
@@ -21,7 +25,7 @@ and whim of the moderator.
       * Infrastructures - Http/MQTT/OpenDxl, OASIS Open source repos
       * sFractal Blinky/Twinkly/Stinky/Finky - HaHa/MaHa/DaHa
       * Huntington Ingalls - OIF, Yuuki
-      * NSA/DoD -
+      * NSA/DoD - JADN, Actuator Profile Tool, ...
       * Google
       * UK MoD
       * CACI
@@ -32,6 +36,7 @@ and whim of the moderator.
       * One Planet Education Network
       * BTS
 * 11:00 - 12:30 Breakout Sessions #2
+   - [Details](./breakouts.md)
 * 12:30 - 1:00 Lunch Break
 * 1:00 - 2:30 Keynote Plenary Session
    - ? introducing financial speaker
@@ -40,6 +45,7 @@ and whim of the moderator.
    - 2:00 - 2:30 Neal Ziring "?talk title?"
 * 2:30 - 2:45 Break
 * 2:45 - 4:00 Breakout Sessions #3
+    - [Details](./breakouts.md)
 * 4:00 - 5:00 Closing Plenary
    - Breakout Session Readouts
    - Accomplishments Recap
