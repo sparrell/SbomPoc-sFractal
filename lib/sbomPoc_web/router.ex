@@ -18,6 +18,8 @@ defmodule SbomPocWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+
+    live "/events", EventsLive, :index
   end
 
   # Other scopes may use custom stacks.

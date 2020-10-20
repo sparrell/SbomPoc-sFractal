@@ -14,15 +14,21 @@ defmodule SbomPoc.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: SbomPoc.PubSub},
       # Start the Endpoint (http/https)
-      SbomPocWeb.Endpoint
+      SbomPocWeb.Endpoint,
       # Start a worker by calling: SbomPoc.Worker.start_link(arg)
       # {SbomPoc.Worker, arg}
+      {Tortoise.Supervisor,
+       [
+         name: Oc2Mqtt.Connection.Supervisor,
+         strategy: :one_for_one
+       ]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: SbomPoc.Supervisor]
     Supervisor.start_link(children, opts)
+    SbomPoc.Mqtt.start()
   end
 
   # Tell Phoenix to update the endpoint configuration
