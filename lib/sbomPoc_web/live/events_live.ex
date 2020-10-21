@@ -12,6 +12,7 @@ defmodule SbomPocWeb.EventsLive do
     {:ok, assign(socket, events: events)}
   end
 
+  @impl true
   def render(assigns) do
     ~L"""
     <h1>Events page view </h1>
@@ -40,6 +41,7 @@ defmodule SbomPocWeb.EventsLive do
     """
   end
 
+  @impl true
   def handle_info({"new_event", %{event: event}}, socket) do
     events = [event | socket.assigns.events]
     {:noreply, assign(socket, events: events)}

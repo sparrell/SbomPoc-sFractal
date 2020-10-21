@@ -27,11 +27,13 @@ defmodule SbomPoc.Mqtt.Handler do
     {:ok, state}
   end
 
+  @impl true
   def connection(:down, state) do
     Logger.warn("Connection has been dropped")
     {:ok, state}
   end
 
+  @impl true
   def connection(:terminated, state) do
     Logger.warn("Connection has been terminated")
     {:ok, state}
@@ -43,21 +45,25 @@ defmodule SbomPoc.Mqtt.Handler do
     {:ok, state}
   end
 
+  @impl true
   def subscription({:warn, [requested: req, accepted: qos]}, topic, state) do
     Logger.warn("Subscribed to #{topic}; requested #{req} but got accepted with QoS #{qos}")
     {:ok, state}
   end
 
+  @impl true
   def subscription({:error, reason}, topic, state) do
     Logger.error("Error subscribing to #{topic}; #{inspect(reason)}")
     {:ok, state}
   end
 
+  @impl true
   def subscription(:down, topic, state) do
     Logger.debug("Unsubscribed from #{topic}")
     {:ok, state}
   end
 
+  @impl true
   def handle_message(topic, msg, state) do
     Logger.debug("Found a message")
     Logger.info("#{state.name}, #{Enum.join(topic, "/")} #{inspect(msg)}")

@@ -77,6 +77,21 @@ make deploy-existing-image instance-name=<give-the-instance-a-unique-name>
 
 The instance name you provide above should be unique and should not be existing on GCP already otherwise you will get an error
 
+#### Custom environment variables
+You can set the following custom environment variables when building the image or launching a vm instance
+
+- CLIENT_ID
+- MQTT_HOST
+- MQTT_PORT
+- USER_NAME
+- PASSWORD
+
+When running the make commands above you can add any of the variables above that you want to customise for example:
+
+```shell
+make deploy-existing-image instance-name=<a-unique-name> CLIENT_ID=<your_new_id> USER_NAME=<prefered_name>
+```
+
 #### updating a running instance
 If you want to update an already running instance with a different version of the application, you need
 to ensure that the image is created and pushed to gcr.io using `make push-image-gcp` after which you can update an instance to use the image.
