@@ -1,3 +1,8 @@
 <%= for status <- @status do %>
-<%= raw status.body %>
+  <h1>
+    <%= link status.author, to: Routes.md_pages_path(@conn, :show_status, status.id) %>
+  </h1>
+  <%= raw(status.body |> String.splitter("") |> Enum.take(100)) %>
+
+  <%= link "read more", to: Routes.md_pages_path(@conn, :show_status, status.id) %>
 <% end %>

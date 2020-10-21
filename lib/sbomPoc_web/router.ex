@@ -18,6 +18,7 @@ defmodule SbomPocWeb.Router do
     pipe_through :browser
 
     get "/status", MDPagesController, :status
+    get "/status/:id", MDPagesController, :show_status
 
     live "/", PageLive, :index
   end
