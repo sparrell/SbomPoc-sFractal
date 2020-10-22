@@ -67,6 +67,9 @@ defmodule SbomPoc.Mqtt do
 
     Logger.info("password set")
 
+    Logger.info("Creating events table...")
+    :events_table = SbomPoc.Mqtt.Handler.create_events_table()
+
     {:ok, _} =
       Tortoise.Supervisor.start_child(
         Oc2Mqtt.Connection.Supervisor,

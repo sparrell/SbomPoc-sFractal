@@ -16,7 +16,6 @@ defmodule SbomPoc.Mqtt.Handler do
   @impl true
   def init(opts) do
     name = Keyword.get(opts, :name)
-    create_events_table()
 
     {:ok, %State{name: name, events: []}}
   end
@@ -78,7 +77,7 @@ defmodule SbomPoc.Mqtt.Handler do
     :ok
   end
 
-  defp create_events_table do
+  def create_events_table do
     :ets.new(:events_table, [:set, :public, :named_table])
   end
 

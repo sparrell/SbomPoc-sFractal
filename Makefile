@@ -5,6 +5,11 @@ APP_NAME ?= `grep 'app:' mix.exs | sed -e 's/\[//g' -e 's/ //g' -e 's/app://' -e
 APP_VERSION := $(shell grep 'version:' mix.exs | cut -d '"' -f2)
 DOCKER_IMAGE_TAG ?= $(APP_VERSION)
 GIT_REVISION ?= `git rev-parse HEAD`
+CLIENT_ID=:sbom_poc
+MQTT_HOST=35.184.192.117
+MQTT_PORT=1883
+USER_NAME=plug
+PASSWORD=fest
 
 # Introspection targets
 # ---------------------
@@ -87,7 +92,7 @@ push-image-gcp: ## push image to gcp
   @echo "Removing previous image $(APP_VERSION) from your machine..."; \
 	docker rmi gcr.io/twinklymaha/sbom:$(APP_VERSION);\
 	fi
-	docker build . -t gcr.io/twinklymaha/sbom:$(APP_VERSION) --no-cache \
+	docker build . -t gcr.io/twinklymaha/sbom:$(APP_VERSION) \
 	--build-arg CLIENT_ID=$(CLIENT_ID) \
 	--build-arg MQTT_HOST=$(MQTT_HOST) \
 	--build-arg MQTT_PORT=$(MQTT_PORT) \
