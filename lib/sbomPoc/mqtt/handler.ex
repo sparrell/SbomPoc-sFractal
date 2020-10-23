@@ -22,7 +22,7 @@ defmodule SbomPoc.Mqtt.Handler do
 
   @impl true
   def connection(:up, state) do
-    Logger.debug("Connection has been established")
+    Logger.info("Connection has been established")
     {:ok, state}
   end
 
@@ -40,7 +40,7 @@ defmodule SbomPoc.Mqtt.Handler do
 
   @impl true
   def subscription(:up, topic, state) do
-    Logger.debug("Subscribed to #{topic}")
+    Logger.info("Subscribed to #{topic}")
     {:ok, state}
   end
 
@@ -58,13 +58,13 @@ defmodule SbomPoc.Mqtt.Handler do
 
   @impl true
   def subscription(:down, topic, state) do
-    Logger.debug("Unsubscribed from #{topic}")
+    Logger.info("Unsubscribed from #{topic}")
     {:ok, state}
   end
 
   @impl true
   def handle_message(topic, msg, state) do
-    Logger.debug("Found a message")
+    Logger.info("Found a message")
     Logger.info("#{state.name}, #{Enum.join(topic, "/")} #{inspect(msg)}")
     record_event(Enum.join(topic, "/"), inspect(msg), state.name)
 
