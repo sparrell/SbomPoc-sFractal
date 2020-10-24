@@ -20,6 +20,8 @@ defmodule SbomPocWeb.Router do
     live "/", PageLive, :index
 
     live "/events", EventsLive, :index
+
+    live "/phoenix", PageLive, :index
   end
 
   # Other scopes may use custom stacks.
