@@ -11,6 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :sbom_poc, SbomPocWeb.Endpoint,
   url: [host: "sbompoc.sfractal.com", port: 4000],
+  check_origin: false,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
