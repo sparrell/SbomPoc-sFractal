@@ -17,7 +17,7 @@ defmodule SbomPocWeb.Router do
   scope "/", SbomPocWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    live "/", HomeLive, :index
 
     live "/events", EventsLive, :index
 
