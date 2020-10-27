@@ -63,3 +63,23 @@ and look up the external ip (a.b.c.d5) of the instance you just created (if you 
 Note the phoenix webserver is running on port 4000
 Go to http://a.b.c.d:4000/
 Note it is http not https
+
+
+#### Custom environment variables
+You can set the following custom environment variables when building the image or launching a vm instance
+
+- CLIENT_ID
+- MQTT_HOST
+- MQTT_PORT
+- USER_NAME
+- PASSWORD
+
+When running the make commands above you can add any of the variables above that you want to customise for example:
+
+```shell
+make deploy-existing-image instance-name=<a-unique-name> CLIENT_ID=<your_new_id> USER_NAME=<prefered_name>
+```
+
+#### updating a running instance
+If you want to update an already running instance with a different version of the application, you need
+to ensure that the image is created and pushed to gcr.io using `make push-image-gcp` after which you can update an instance to use the image.

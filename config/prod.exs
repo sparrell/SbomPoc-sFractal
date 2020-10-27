@@ -10,11 +10,13 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :sbom_poc, SbomPocWeb.Endpoint,
-  url: [host: "34.123.139.249", port: 4000],
+  url: [host: "sbompoc.sfractal.com", port: 4000],
+  check_origin: false,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
-config :logger, level: :info
+# config :logger, level: :info
+config :logger, level: :debug
 
 config :sbom_poc, SbomPocWeb.Endpoint, server: true
 
