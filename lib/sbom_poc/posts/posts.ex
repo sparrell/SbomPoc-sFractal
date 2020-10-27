@@ -1,4 +1,5 @@
 defmodule SbomPoc.Post do
+  @moduledoc false
   alias SbomPoc.Post.Status
 
   use NimblePublisher,
