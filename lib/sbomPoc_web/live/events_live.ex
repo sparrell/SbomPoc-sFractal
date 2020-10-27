@@ -19,7 +19,7 @@ defmodule SbomPocWeb.EventsLive do
     <%= if Enum.empty? @events do %>
     <h2> No events yet </h2>
     <% else %>
-    <table>
+    <table phx-hook="PrettyPrint">
       <thead>
         <tr>
           <th>Time</th>
@@ -32,7 +32,9 @@ defmodule SbomPocWeb.EventsLive do
         <tr>
         <td><%= time %></td>
         <td><%= details.topic %></td>
-        <td><%= details.message %></td>
+        <td class="json">
+          <%= raw details.message  %>
+        </td>
         </tr>
        <% end %>
       </tbody>
