@@ -17,6 +17,12 @@ You will need to install the following dependancies to enable production of SBOM
 npm install -g @cyclonedx/bom
 ```
 
+### Password for accessing the sbom dashboard
+```shell
+username: sbom
+password: sbom
+```
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
