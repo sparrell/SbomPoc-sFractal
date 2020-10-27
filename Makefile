@@ -67,6 +67,11 @@ test: ## Run the test suite
 .PHONY: format
 format: mix format ## Run formatting tools on the code
 
+.PHONY: sbom ## create sbom file for both hex and npm dependancies
+sbom:
+	mix sbom.cyclonedx -o elixir_bom.xml
+	cd assets && cyclonedx-bom -o ../bom.xml -a ../elixir_bom.xml && cd ..
+
 
 release: ## Build a release of the application with MIX_ENV=prod
 	MIX_ENV=prod mix deps.get --only prod
