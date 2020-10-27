@@ -24,22 +24,29 @@ defmodule SbomPocWeb.HomeLive do
       <li>blinkymaha.sfractal.com</li>
       <li>blinkyhaha.sfractal.com</li>
       <li>vulnerable.twinklymaha.sfractal.com</li>
-      <li> </li>
     </bl>
     <h2>sbompoc.sfractal.com</h2>
     <p>This is running on GCP vm buddhabrot</p>
-    <p>/ is this home page</p>
-    <p>/events is mqtt log </p>
-    <p>/phoenix is phoenix info page </p>
-    <p>/dashboard is beam under-the-hood info for debugging</p>
+    <p>home page http://sbompoc.sfractal.com:4000/</p>
+    <p>events is mqtt log http://sbompoc.sfractal.com:4000/events</p>
+    <p>??? is sbom and dependency tracker add-link-here</p>
+    <p>phoenix is phoenix info page http://sbompoc.sfractal.com:4000/phoenix</p>
+    <p>dashboard is beam under-the-hood info for debugging http://sbompoc.sfractal.com:4000/dashboard/sbom_poc%40buddhabrot/home</p>
     <p> </p>
-    <p>more stuff</p>
-    <h2>x.sfractal.com</h2>
-    <p> </p>
-    <h2>x.sfractal.com</h2>
-    <p> </p>
-    <h2>x.sfractal.com</h2>
-    <p> </p>
+
+    <h2>twinklymaha.sfractal.com</h2>
+    <p>Twinkly (ie digital twin of blinky ie web leds)
+    MaHa (ie Mqtt Api Helloworld Actuator)
+    http://twinklymaha.sbompoc.sfractal.com:4000/</p>
+    <h2>twinklyhaha.sfractal.com</h2>
+    <p>Twinkly (ie digital twin of blinky ie web leds)
+    HaHa (ie Http Api Helloworld Actuator)</p>
+    <h2>blinkymaha.sfractal.com</h2>
+    <p>Raspberry Pi with LEDs (ie Blinky)
+    MaHa (ie Mqtt Api Helloworld Actuator)</p>
+    <h2>blinkyhaha.sfractal.com</h2>
+    <p>Raspberry Pi with LEDs (ie Blinky)
+    HaHa (ie Http Api Helloworld Actuator)</p>
     """
   end
 
