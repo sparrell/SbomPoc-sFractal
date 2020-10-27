@@ -30,7 +30,7 @@ defmodule SbomPocWeb do
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/sbomPoc_web/templates",
+        root: "lib/sbom_poc_web/templates",
         namespace: SbomPocWeb
 
       # Import convenience functions from controllers

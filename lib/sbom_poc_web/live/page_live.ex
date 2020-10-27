@@ -27,9 +27,9 @@ defmodule SbomPocWeb.PageLive do
   end
 
   defp search(query) do
-    #if not SbomPocWeb.Endpoint.config(:code_reloader) do
+    # if not SbomPocWeb.Endpoint.config(:code_reloader) do
     #  raise "action disabled when not in development"
-    #end
+    # end
 
     for {app, desc, vsn} <- Application.started_applications(),
         app = to_string(app),

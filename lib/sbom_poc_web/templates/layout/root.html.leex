@@ -19,6 +19,7 @@
               <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
             <% end %>
           </ul>
+          <%= render "_user_menu.html", assigns %>
         </nav>
         <a href="https://www.eventbrite.com/e/sbom-poc-openc2-plugfest-hackathon-tickets-124335150783" class="phx-logo">
           <img src="<%= Routes.static_path(@conn, "/images/Plugfest.png") %>" alt="Plugfest Logo"/>

@@ -39,6 +39,7 @@ defmodule SbomPoc.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 2.0"},
       {:phoenix, "~> 1.5.3"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto, ">= 3.4.4 and < 3.4.5"},
@@ -55,6 +56,7 @@ defmodule SbomPoc.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:phx_gen_auth, "~> 0.4.0", only: [:dev], runtime: false},
       {:tortoise, "~> 0.9"},
       {:sbom, "~> 0.6.0", only: :dev, runtime: false}
     ]
