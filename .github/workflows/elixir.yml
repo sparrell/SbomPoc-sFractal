@@ -47,5 +47,11 @@ jobs:
       run: mix deps.get
     - name: Run tests
       run: mix test
+      env:
+        CLIENT_ID: :sfractal2020
+        MQTT_HOST: mqtt.sfractal.com
+        MQTT_PORT: 1883
+        USER_NAME: plug
+        PASSWORD: fest
     - name: Check lints
       run: make lint

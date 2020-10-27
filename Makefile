@@ -5,6 +5,11 @@ APP_NAME ?= `grep 'app:' mix.exs | sed -e 's/\[//g' -e 's/ //g' -e 's/app://' -e
 APP_VERSION := $(shell grep 'version:' mix.exs | cut -d '"' -f2)
 DOCKER_IMAGE_TAG ?= $(APP_VERSION)
 GIT_REVISION ?= `git rev-parse HEAD`
+CLIENT_ID=:sbompoc
+MQTT_HOST=34.86.117.113
+MQTT_PORT=1883
+USER_NAME=plug
+PASSWORD=fest
 
 # Introspection targets
 # ---------------------
@@ -62,6 +67,11 @@ test: ## Run the test suite
 .PHONY: format
 format: mix format ## Run formatting tools on the code
 
+.PHONY: sbom ## create sbom file for both hex and npm dependancies
+sbom:
+	mix sbom.cyclonedx -o elixir_bom.xml
+	cd assets && cyclonedx-bom -o ../bom.xml -a ../elixir_bom.xml && cd ..
+
 
 release: ## Build a release of the application with MIX_ENV=prod
 	MIX_ENV=prod mix deps.get --only prod
@@ -74,7 +84,12 @@ release: ## Build a release of the application with MIX_ENV=prod
 
 .PHONY: docker-image
 docker-image:
-	docker build . -t sbom:$(APP_VERSION) --no-cache
+	docker build . -t sbom:$(APP_VERSION) --no-cache \
+	--build-arg CLIENT_ID=$(CLIENT_ID) \
+	--build-arg MQTT_HOST=$(MQTT_HOST) \
+	--build-arg MQTT_PORT=$(MQTT_PORT) \
+	--build-arg USER_NAME=$(USER_NAME) \
+	--build-arg PASSWORD=$(PASSWORD) \
 
 .PHONY: push-image-gcp push-and-serve deploy-existing-image
 push-image-gcp: ## push image to gcp
@@ -82,7 +97,12 @@ push-image-gcp: ## push image to gcp
   @echo "Removing previous image $(APP_VERSION) from your machine..."; \
 	docker rmi gcr.io/twinklymaha/sbom:$(APP_VERSION);\
 	fi
-	docker build . -t gcr.io/twinklymaha/sbom:$(APP_VERSION) --no-cache
+	docker build . -t gcr.io/twinklymaha/sbom:$(APP_VERSION) \
+	--build-arg CLIENT_ID=$(CLIENT_ID) \
+	--build-arg MQTT_HOST=$(MQTT_HOST) \
+	--build-arg MQTT_PORT=$(MQTT_PORT) \
+	--build-arg USER_NAME=$(USER_NAME) \
+	--build-arg PASSWORD=$(PASSWORD) \
 
 	gcloud container images delete gcr.io/twinklymaha/sbom:$(APP_VERSION) --force-delete-tags  || echo "no image to delete on the remote"
 	docker push gcr.io/twinklymaha/sbom:$(APP_VERSION)
@@ -97,7 +117,8 @@ deploy-existing-image:
 		--network-tier=PREMIUM \
 		--metadata=google-logging-enabled=true \
 		--tags=http-server,https-server \
-		--labels=project=sbom
+		--labels=project=sbom \
+		--container-env=CLIENT_ID=$(CLIENT_ID),MQTT_HOST=$(MQTT_HOST),MQTT_PORT=$(MQTT_PORT),USER_NAME=$(USER_NAME),PASSWORD=$(PASSWORD)
 
 .PHONY: update-instance
 update-instance:

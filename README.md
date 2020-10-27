@@ -10,6 +10,12 @@ First ensure you have the following set up in your computer
 You can use [the phoenix installation guide](https://hexdocs.pm/phoenix/installation.html#content) to ensure you
 have everything set up as expected
 
+## Installing SBOM utilities
+You will need to install the following dependancies to enable production of SBOM files from the command line
+
+```shell
+npm install -g @cyclonedx/bom
+```
 
 To start your Phoenix server:
 
@@ -34,7 +40,11 @@ lint-credo             Use credo to ensure formatting styles
 lint-format            Check if the project is well formated using elixir formatter
 lint                   Check if the project follows set conventions such as formatting
 test                   Run the test suite
+sbom                   Create SBOM file for hex and npm deps
 ```
+
+## Generating SBOM file
+To generate an sbom file, use the make task `make sbom` to generate an `sbom.xml` file on the project root
 
 ## Deployment to GCP
 The deployment is done using docker images with the help of make tasks. We can create a docker image, push it to container registry on gcp and then launch
@@ -76,6 +86,21 @@ make deploy-existing-image instance-name=<give-the-instance-a-unique-name>
 ```
 
 The instance name you provide above should be unique and should not be existing on GCP already otherwise you will get an error
+
+#### Custom environment variables
+You can set the following custom environment variables when building the image or launching a vm instance
+
+- CLIENT_ID
+- MQTT_HOST
+- MQTT_PORT
+- USER_NAME
+- PASSWORD
+
+When running the make commands above you can add any of the variables above that you want to customise for example:
+
+```shell
+make deploy-existing-image instance-name=<a-unique-name> CLIENT_ID=<your_new_id> USER_NAME=<prefered_name>
+```
 
 #### updating a running instance
 If you want to update an already running instance with a different version of the application, you need

@@ -36,6 +36,20 @@ RUN mix phx.digest && mix release
 
 FROM debian:buster-slim AS app
 
+ARG CLIENT_ID=:sbompoc
+ARG MQTT_HOST=34.86.117.113
+ARG MQTT_PORT=1883
+ARG USER_NAME=plug
+ARG PASSWORD=fest
+
+
+ENV LANG=C.UTF-8
+ENV CLIENT_ID=$CLIENT_ID
+ENV MQTT_HOST=$CLIENT_ID
+ENV MQTT_PORT=$MQTT_PORT
+ENV USER_NAME=$USER_NAME
+ENV PASSWORD=$PASSWORD
+
 RUN apt-get update && apt-get install -y openssl
 
 RUN useradd --create-home app
