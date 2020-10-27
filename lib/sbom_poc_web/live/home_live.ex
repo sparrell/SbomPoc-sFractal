@@ -4,9 +4,9 @@ defmodule SbomPocWeb.HomeLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    #Phoenix.PubSub.subscribe(SbomPoc.PubSub, @topic)
+    # Phoenix.PubSub.subscribe(SbomPoc.PubSub, @topic)
 
-    #events = SbomPoc.Mqtt.Handler.all_events()
+    # events = SbomPoc.Mqtt.Handler.all_events()
     {:ok, assign(socket, home: "whatever")}
   end
 
@@ -49,6 +49,4 @@ defmodule SbomPocWeb.HomeLive do
     HaHa (ie Http Api Helloworld Actuator)</p>
     """
   end
-
-
 end

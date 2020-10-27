@@ -15,6 +15,7 @@ defmodule SbomPoc.Application do
         For example:
         export CLIENT_ID=:mqttlogger
         """
+
     Logger.info("mqtt:application:client_id is #{client_id}")
 
     mqtt_host =
@@ -25,6 +26,7 @@ defmodule SbomPoc.Application do
         export MQTT_HOST="34.86.117.113"
         export MQTT_HOST="mqtt.sfractal.com"
         """
+
     Logger.info("mqtt:application:mqtt_host is #{mqtt_host}")
 
     mqtt_port =
@@ -36,6 +38,7 @@ defmodule SbomPoc.Application do
           export MQTT_PORT=1883
           """)
       )
+
     Logger.info("mqtt:application:mqtt_port is #{mqtt_port}")
 
     server = {Tortoise.Transport.Tcp, host: mqtt_host, port: mqtt_port}
@@ -47,6 +50,7 @@ defmodule SbomPoc.Application do
         Examples:
         export USER_NAME="plug"
         """
+
     Logger.info("mqtt:application:user_name is #{user_name}")
 
     password =
@@ -56,6 +60,7 @@ defmodule SbomPoc.Application do
         Example:
         export PASSWORD="fest"
         """
+
     Logger.info("mqtt:application:password set")
 
     Logger.info("mqtt:application:Creating events table...")
@@ -74,7 +79,7 @@ defmodule SbomPoc.Application do
       # {SbomPoc.Worker, arg}
 
       ## orig way of starting mqtt which may be overkill
-      ##{Tortoise.Supervisor,
+      ## {Tortoise.Supervisor,
       ## [
       ##   name: Oc2Mqtt.Connection.Supervisor,
       ##   strategy: :one_for_one
@@ -82,21 +87,20 @@ defmodule SbomPoc.Application do
       # trying another way
       {Tortoise.Connection,
        [
-        client_id: client_id,
-        server: server,
-        handler: {SbomPoc.Mqtt.Handler, [name: client_id]},
-        user_name: user_name,
-        password: password,
-        subscriptions: [{"#", 0}]
-       ]
-      }
+         client_id: client_id,
+         server: server,
+         handler: {SbomPoc.Mqtt.Handler, [name: client_id]},
+         user_name: user_name,
+         password: password,
+         subscriptions: [{"#", 0}]
+       ]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: SbomPoc.Supervisor]
     Supervisor.start_link(children, opts)
-    ##SbomPoc.Mqtt.start()
+    ## SbomPoc.Mqtt.start()
   end
 
   # Tell Phoenix to update the endpoint configuration

@@ -1,4 +1,5 @@
 defmodule SbomPoc.Accounts.UserNotifier do
+  @moduledoc false
   # For simplicity, this module simply logs messages to the terminal.
   # You should replace it by a proper e-mail or notification tool, such as:
   #

@@ -4,8 +4,8 @@ defmodule SbomPoc.Accounts do
   """
 
   import Ecto.Query, warn: false
+  alias SbomPoc.Accounts.{User, UserNotifier, UserToken}
   alias SbomPoc.Repo
-  alias SbomPoc.Accounts.{User, UserToken, UserNotifier}
 
   ## Database getters
 
