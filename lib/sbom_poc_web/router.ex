@@ -25,6 +25,8 @@ defmodule SbomPocWeb.Router do
     live "/events", EventsLive, :index
 
     live "/phoenix", PageLive, :index
+    get "/status", MDPagesController, :status
+    get "/status/:id", MDPagesController, :show_status
   end
 
   # Other scopes may use custom stacks.
