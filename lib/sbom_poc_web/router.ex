@@ -45,7 +45,7 @@ defmodule SbomPocWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/" do
-      pipe_through :browser
+      pipe_through [:browser, :require_authenticated_user]
       live_dashboard "/dashboard", metrics: SbomPocWeb.Telemetry
     end
   end
