@@ -52,9 +52,13 @@ sbom                   Create SBOM file for hex and npm deps
 ## Generating SBOM file
 To generate an sbom file, use the make task `make sbom` to generate an `sbom.xml` file on the project root
 
+## BOM analysis tool
+If you want to deploy your own bom analysis tool, you can [follow this instructions](./docs/dependancy-tracker.md) to get set up
+
 ## Deployment to GCP
 
 Instructions to deployment can be found on [deployment docs](./docs/deployment.md)
+
 
 
 ## Adding status
