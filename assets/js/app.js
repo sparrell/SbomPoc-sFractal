@@ -74,31 +74,28 @@ function isJsonString(jsonString) {
   }
 }
 
-function prettyPrinting() {
-  var instances = document.getElementsByClassName("json");
-  for (let instance of instances) {
-    let content = instance.innerHTML;
+function prettyPrinting(element) {
+    let content = element.innerHTML;
     if (isJsonString(content)) {
       try {
         let obj = JSON.parse(content);
         content = JSON.stringify(JSON.parse(obj), undefined, 4);
-        instance.innerHTML = syntaxHighlight(content);
-        instance.style.whiteSpace = "pre";
+        element.innerHTML = syntaxHighlight(content);
+        element.style.whiteSpace = "pre";
       } catch (e) {
-        return false; // It's not a valid JSON format
+         false
       }
     }
-  }
 }
 
 let Hooks = {};
 
 Hooks.PrettyPrint = {
   mounted() {
-    prettyPrinting();
+     prettyPrinting(this.el);
   },
   updated() {
-    prettyPrinting();
+     prettyPrinting(this.el);
   }
 };
 
