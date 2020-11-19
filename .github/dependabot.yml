@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/assets"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "elixir"
+    directory: "/"
+    schedule:
+      interval: "daily"

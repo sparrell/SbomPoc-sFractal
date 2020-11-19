@@ -1,0 +1,2 @@
+  <h1> <%= @status.author %> </h1>
+  <%= raw @status.body %>

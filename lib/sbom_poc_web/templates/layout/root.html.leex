@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <%= live_title_tag assigns[:page_title] || "SbomPoc", suffix: " · Phoenix Framework" %>
+    <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </head>
+  <body>
+    <header>
+      <section class="container">
+        <nav role="navigation">
+          <ul>
+            <li> <a href="http://34.123.55.37:8080/projects/4bf2c440-f4bf-4d4f-b02c-fea518b5d6a2" target="_blank"> SBOM Dashboard </a>
+            </li>
+            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
+            <% end %>
+          </ul>
+          <%= render "_user_menu.html", assigns %>
+        </nav>
+        <a href="https://www.eventbrite.com/e/sbom-poc-openc2-plugfest-hackathon-tickets-124335150783" class="phx-logo">
+          <img src="<%= Routes.static_path(@conn, "/images/Plugfest.png") %>" alt="Plugfest Logo"/>
+        </a>
+      </section>
+    </header>
+    <%= @inner_content %>
+  </body>
+</html>

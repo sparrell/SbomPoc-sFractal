@@ -1,0 +1,28 @@
+deploy_to_production:
+  image: elixir:1.11.2
+
+  stage: deploy
+  before_script:
+    - mix local.rebar --force
+    - mix local.hex --force
+    - apt update -y > /dev/null && apt install nodejs npm -y > /dev/null
+    - npm i -g webpack webpack-cli
+
+  script:
+    - export APP_NAME="$(grep 'app:' mix.exs | sed -e 's/\[//g' -e 's/ //g' -e 's/app://' -e 's/[:,]//g')"
+    - export APP_VSN="$(grep 'version:' mix.exs | cut -d '"' -f2)"
+    - export CURRENT_APP=$APP_NAME-$APP_VSN
+    - echo "$PRODSECRETS" > config/prod.secret.exs
+    - make release
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$PROD_SSH_KEY")
+    - scp -T -o StrictHostKeyChecking=no "_build/prod/$CURRENT_APP.tar.gz" sigumagwa@$PROD_IP:/home/sigumagwa/$CURRENT_APP.tar.gz
+    - ssh -T -o StrictHostKeyChecking=no sigumagwa@$PROD_IP <<EOF
+    - rm -rf $CURRENT_APP
+    - mkdir $CURRENT_APP
+    - tar -xzf $CURRENT_APP.tar.gz --strip-components=0 -C $CURRENT_APP
+    - cd $CURRENT_APP
+    - bin/$APP_NAME stop || bin/$APP_NAME daemon
+    - bin/$APP_NAME eval "TwinklyMaha.Release.migrate"
+    - bin/$APP_NAME daemon
+    - EOF
