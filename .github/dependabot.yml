@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "elixir:hex"
+  - package-ecosystem: "mix"
     directory: "/"
     schedule:
       interval: "daily"
