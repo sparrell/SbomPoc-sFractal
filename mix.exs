@@ -42,7 +42,7 @@ defmodule SbomPoc.MixProject do
       {:bcrypt_elixir, "~> 2.0"},
       {:phoenix, "~> 1.5.3"},
       {:phoenix_ecto, "~> 4.1"},
-      {:ecto, ">= 3.4.4 and < 3.4.5"},
+      {:ecto, ">= 3.4.4 and < 3.4.7"},
       {:ecto_sql, ">= 3.4.4 and < 3.4.6"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_live_view, "~> 0.14.8"},
