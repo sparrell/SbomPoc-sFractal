@@ -11,15 +11,9 @@ use Mix.Config
 # before starting your production server.
 config :sbom_poc, SbomPocWeb.Endpoint,
   url: [host: "sbompoc.sfractal.com", port: 4000],
-  # https: [
-  #   port: 443,
-  #   cipher_suite: :strong,
-  #   keyfile: System.get_env(),
-  #   certfile: System.get_env(),
-  #   transport_options: [socket_opts: [:inet6]]
-  # ],
   check_origin: false,
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  CERT_MODE: "production"
 
 # Do not print debug messages in production
 # config :logger, level: :info
