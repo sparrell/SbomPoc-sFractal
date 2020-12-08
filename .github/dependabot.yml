@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "elixir"
+  - package-ecosystem: "mix"
     directory: "/"
     target-branch: "develop"
     schedule:

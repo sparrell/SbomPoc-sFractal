@@ -42,8 +42,8 @@ defmodule SbomPoc.MixProject do
       {:bcrypt_elixir, "~> 2.0"},
       {:phoenix, "~> 1.5.3"},
       {:phoenix_ecto, "~> 4.1"},
-      {:ecto, ">= 3.4.4 and < 3.4.5"},
-      {:ecto_sql, ">= 3.4.4 and < 3.4.5"},
+      {:ecto, ">= 3.4.4 and < 3.4.7"},
+      {:ecto_sql, ">= 3.4.4 and < 3.4.6"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_live_view, "~> 0.14.8"},
       {:floki, ">= 0.0.0", only: :test},
@@ -57,7 +57,7 @@ defmodule SbomPoc.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:nimble_publisher, "~> 0.1.0"},
-      {:phx_gen_auth, "~> 0.4.0", only: [:dev], runtime: false},
+      {:phx_gen_auth, "~> 0.6.0", only: [:dev], runtime: false},
       {:tortoise, "~> 0.9"},
       {:sbom, "~> 0.6.0", only: :dev, runtime: false}
     ]
