@@ -59,7 +59,7 @@ defmodule SbomPoc.MixProject do
       {:nimble_publisher, "~> 0.1.0"},
       {:phx_gen_auth, "~> 0.6.0", only: [:dev], runtime: false},
       {:tortoise, "~> 0.9"},
-      {:sbom, "~> 0.6.0", only: :dev, runtime: false}
+      {:sbom, git: "https://github.com/voltone/sbom"}
     ]
   end
 

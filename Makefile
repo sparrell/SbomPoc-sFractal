@@ -67,10 +67,11 @@ test: ## Run the test suite
 .PHONY: format
 format: mix format ## Run formatting tools on the code
 
-.PHONY: sbom ## create sbom file for both hex and npm dependancies
-sbom:
-	mix sbom.cyclonedx -o elixir_bom.xml
-	cd assets && cyclonedx-bom -o ../bom.xml -a ../elixir_bom.xml && cd ..
+.PHONY: sbom
+sbom: ## creates sbom for both  npm and hex dependancies
+	mix deps.get && mix sbom.cyclonedx -o elixir_bom.xml
+	cd assets/  && npm install && npm install -g @cyclonedx/bom && cyclonedx-bom -o ../bom.xml -a ../elixir_bom.xml && cd ..
+	./cyclonedx-cli convert --input-file bom.xml --output-file bom.json
 
 
 release: ## Build a release of the application with MIX_ENV=prod
@@ -123,3 +124,5 @@ deploy-existing-image:
 .PHONY: update-instance
 update-instance:
 	gcloud compute instances update-container $(instance-name) --container-image gcr.io/twinklymaha/sbom:$(image-tag)
+
+
