@@ -2,8 +2,6 @@ on:
   push:
     tags:
     - 'v*'
-    branches:
-      - auto-create-bom-on-release
 
 name: Upload Release Asset
 
@@ -28,13 +26,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.13.0
-      - name: Install dependencies
-        run:  |
-          mix deps.get
-          (cd assets && npm i)
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Build project
         run: |
           curl -L -o cyclonedx-cli https://github.com/CycloneDX/cyclonedx-cli/releases/download/v0.7.0/cyclonedx-linux-x64
@@ -50,13 +43,21 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset
+      - name: Upload SBOM Json
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./my-artifact.zip
-          asset_name: my-artifact.zip
-          asset_content_type: application/zip
+          asset_path: ./bom.json
+          asset_name: bom.json
+          asset_content_type: application/octet-stream
+      - name: Upload SBOM XML
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bom.xml
+          asset_name: bom.xml
+          asset_content_type: application/octet-stream
