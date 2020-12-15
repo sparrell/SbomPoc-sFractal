@@ -50,7 +50,20 @@ sbom                   Create SBOM file for hex and npm deps
 ```
 
 ## Generating SBOM file
-To generate an sbom file, use the make task `make sbom` to generate an `sbom.xml` file on the project root
+
+To generate an sbom file, use the make task `make sbom` to generate a `bom.json` and `bom.xml` file on the project root.
+
+**Before you begin:**
+ - [Download cyclonedx-cli tool](https://github.com/CycloneDX/cyclonedx-cli/releases) that supports converting
+ of sbom in different formats.
+ - Ensure that the `cyclonedx-cli tool` is executable, if not use the command to make it executable `chmod a+x cyclonedx-cli tool`
+ - Add the `cyclonedx-cli tool` to the root of the project and rename it to `cyclonedx-cli**
+
+**Note: If you get an error on MacOS**
+```shell
+cannot be opened because the developer cannot be verified. macOS cannot verify that this app is free from malware
+```
+You might get an error when running this command on a mac, follow [instructions on stackoverflow](https://stackoverflow.com/a/59899342/4137155) to allow the binary to execute
 
 ## BOM analysis tool
 If you want to deploy your own bom analysis tool, you can [follow this instructions](./docs/dependancy-tracker.md) to get set up
