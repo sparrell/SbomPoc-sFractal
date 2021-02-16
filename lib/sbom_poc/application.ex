@@ -74,7 +74,7 @@ defmodule SbomPoc.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: SbomPoc.PubSub},
       # Start the Endpoint (http/https)
-      SbomPocWeb.Endpoint,
+      {SiteEncrypt.Phoenix, SbomPocWeb.Endpoint},
       # Start a worker by calling: SbomPoc.Worker.start_link(arg)
       # {SbomPoc.Worker, arg}
 
